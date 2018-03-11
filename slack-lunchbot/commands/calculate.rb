@@ -13,7 +13,6 @@ module SlackLunchbot
       end
 
       command 'Yes' do |client, data, _match|
-
         arr << "<@#{data.user}>"
         client.say(channel: data.channel, text: arr)
         puts "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
@@ -23,8 +22,22 @@ module SlackLunchbot
       end
 
       command 'stop' do |client, data, _match|
-        newArr = arr.each_slice(1).to_a
-        client.say(channel: data.channel, text: newArr)
+        shuffleTotal = arr.shuffle
+        splitIntoGroups = (shuffleTotal.length / 5).ceil
+        c = shuffleTotal.length / splitIntoGroups
+        d = shuffleTotal.each_slice(c).to_a
+
+        d.map { |group|   }
+
+        # groups = d.each do |group|
+        #   number = 0
+        #   group << "group" + " " + number.to_s
+        #
+        #   number += 1
+        #
+        # end
+
+        client.say(channel: data.channel, text: d)
       end
 
 
