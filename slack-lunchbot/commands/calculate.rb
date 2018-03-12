@@ -4,10 +4,6 @@ module SlackLunchbot
 
       arr = []
 
-      command 'Hey' do |client, data, _match|
-        client.say(channel: data.channel, text: 'Wazaaaaaaap')
-      end
-
       command 'start' do |client, data, _match|
         client.say(channel: data.channel, text: "#{data.user}")
       end
@@ -27,15 +23,11 @@ module SlackLunchbot
         c = shuffleTotal.length / splitIntoGroups
         d = shuffleTotal.each_slice(c).to_a
 
-        d.map { |group|   }
-
-        # groups = d.each do |group|
-        #   number = 0
-        #   group << "group" + " " + number.to_s
-        #
-        #   number += 1
-        #
-        # end
+        groups = d.each do |group|
+          number = 0
+          group = "group" + number.to_s
+          number += 1
+        end
 
         client.say(channel: data.channel, text: d)
       end
