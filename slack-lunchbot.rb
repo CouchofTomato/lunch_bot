@@ -1,3 +1,5 @@
 require 'slack-ruby-bot'
+require 'slack-lunchbot/commands/refinements.rb'
 require 'slack-lunchbot/commands/calculate'
+require 'slack-lunchbot/commands/methods'
 require 'slack-lunchbot/bot'
