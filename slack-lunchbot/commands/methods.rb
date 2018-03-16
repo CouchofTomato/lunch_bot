@@ -9,7 +9,9 @@ module SlackLunchbot
     end
 
     def add_user slack_username
+      return false if users_going.include? slack_username
       self.users_going << slack_username
+      true
     end
 
     def list_users_going group

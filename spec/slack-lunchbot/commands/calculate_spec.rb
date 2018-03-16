@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe SlackLunchbot::Commands::Calculate do
   def app
     SlackLunchbot::Bot.instance

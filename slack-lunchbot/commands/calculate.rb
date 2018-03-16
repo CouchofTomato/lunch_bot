@@ -12,9 +12,13 @@ module SlackLunchbot
 
       #Bot listens for confirmation emoji being added into the channel and adds the user to an array
       command ':+1:' do |client, data, _match|
-        users_going.add_user data.user
-        client.say(channel: data.channel, text: "<@#{data.user}>" + " has been added to the list")
-        puts "||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+        user_added = users_going.add_user data.user
+        if user_added
+          text = "<@#{data.user}> has been added to the list"
+        else
+          text = "You've already added yourself <@#{data.user}>. You must be hungry"
+        end
+        client.say(channel: data.channel, text: text)
       end
 
       command 'who is going so far?' do |client, data, _match|
@@ -29,8 +33,6 @@ module SlackLunchbot
           client.say(channel: data.channel, text: "Group #{index+1}: #{users_going.list_users_going(group)}")
         end
       end
-
-
     end
   end
 end
